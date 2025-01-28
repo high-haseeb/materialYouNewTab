@@ -89,6 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const aiToolsCont = document.getElementById("aiToolsCont");
     const aiToolsCheckbox = document.getElementById("aiToolsCheckbox");
 
+    aiToolsCont.style.display = "flex";
+    saveDisplayStatus("aiToolsDisplayStatus", "flex");
+
     aiToolsCheckbox.addEventListener("change", function () {
         saveCheckboxState("aiToolsCheckboxState", aiToolsCheckbox);
         if (aiToolsCheckbox.checked) {

@@ -4,10 +4,16 @@
     "version": "3.0.19",
     "description": "A Simple New Tab (browser's home page) inspired by Google's 'Material You' design.",
     "optional_permissions": ["bookmarks"],
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "https://www.tsb.org.tr/*"
+    ],
     "host_permissions": [
 		"https://www.google.com/complete/search*",
 		"https://duckduckgo.com/ac/*",
-		"https://search.brave.com/api/suggest*"
+		"https://search.brave.com/api/suggest*",
+        "https://www.tsb.org.tr/*"
 	],
     "icons": {
         "16": "icon16.png",

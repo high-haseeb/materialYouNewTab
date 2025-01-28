@@ -40,6 +40,9 @@ document.addEventListener("click", function (event) {
 // ------------------------End of Google App Menu Setup-----------------------------------
 
 // Save and load toggle state
+//
+googleAppsCont.style.display = "flex";
+saveDisplayStatus("googleAppsDisplayStatus", "flex");
 document.addEventListener("DOMContentLoaded", function () {
     const googleAppsCont = document.getElementById("googleAppsCont");
 

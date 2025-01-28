@@ -20,6 +20,7 @@
 
 let proxyurl;
 window.addEventListener("DOMContentLoaded", () => {
+    getNews();
     const userProxyInput = document.getElementById("userproxy");
     const saveProxyButton = document.getElementById("saveproxy");
     const savedProxy = localStorage.getItem("proxy");
@@ -64,12 +65,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Showing border or outline when you click on the searchbar
 const searchbar = document.getElementById("searchbar");
-searchbar.addEventListener("click", function (event) {
+searchbar.addEventListener("click", function(event) {
     event.stopPropagation(); // Stop the click event from propagating to the document
     searchbar.classList.add("active");
 });
 
-document.addEventListener("click", function (event) {
+document.addEventListener("click", function(event) {
     // Check if the clicked element is not the searchbar
     if (!searchbar.contains(event.target)) {
         searchbar.classList.remove("active");
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    document.querySelector(".dropdown-btn").addEventListener("click", function (event) {
+    document.querySelector(".dropdown-btn").addEventListener("click", function(event) {
         const resultBox = document.getElementById("resultBox");
         if (resultBox.classList.toString().includes("show")) return;
 
@@ -270,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Event listener for keydown events to navigate up/down
-    document.querySelector(".dropdown").addEventListener("keydown", function (event) {
+    document.querySelector(".dropdown").addEventListener("keydown", function(event) {
         if (dropdown.style.display === "block") {
             if (event.key === "ArrowDown") {
                 event.preventDefault();  // Prevent the page from scrolling
@@ -372,12 +373,12 @@ const resetDarkTheme = () => {
         element.style.fill = ""; // Reset fill color
     });
     // Reset the CSS variables to default (for non-dark themes)
-    document.documentElement.style.setProperty("--bg-color-blue", "#ffffff");
-    document.documentElement.style.setProperty("--accentLightTint-blue", "#E2EEFF");
-    document.documentElement.style.setProperty("--darkerColor-blue", "#3569b2");
-    document.documentElement.style.setProperty("--darkColor-blue", "#4382EC");
-    document.documentElement.style.setProperty("--textColorDark-blue", "#1b3041");
-    document.documentElement.style.setProperty("--whitishColor-blue", "#ffffff");
+    document.documentElement.style.setProperty("--bg-color-blue", "#ffffff"); // Light warm beige
+    document.documentElement.style.setProperty("--accentLightTint-blue", "#F4E3D2"); // Very light beige tint
+    document.documentElement.style.setProperty("--darkerColor-blue", "#8A5632"); // Dark blueish-orange
+    document.documentElement.style.setProperty("--darkColor-blue", "#B26E45"); // Warm dark tan
+    document.documentElement.style.setProperty("--textColorDark-blue", "#4D2E1A"); // Deep blue
+    document.documentElement.style.setProperty("--whitishColor-blue", "#FFF7EF"); // Creamy white
 };
 
 
@@ -388,12 +389,12 @@ const applySelectedTheme = (colorValue) => {
 
         // Apply styles for other themes (not dark)
         if (colorValue === "blue") {
-            document.documentElement.style.setProperty("--bg-color-blue", "#BBD6FD");
-            document.documentElement.style.setProperty("--accentLightTint-blue", "#E2EEFF");
-            document.documentElement.style.setProperty("--darkerColor-blue", "#3569b2");
-            document.documentElement.style.setProperty("--darkColor-blue", "#4382EC");
-            document.documentElement.style.setProperty("--textColorDark-blue", "#1b3041");
-            document.documentElement.style.setProperty("--whitishColor-blue", "#ffffff");
+            document.documentElement.style.setProperty("--bg-color-blue", "#ffffff"); // Light warm beige
+            document.documentElement.style.setProperty("--accentLightTint-blue", "#F4E3D2"); // Very light beige tint
+            document.documentElement.style.setProperty("--darkerColor-blue", "#8A5632"); // Dark blueish-orange
+            document.documentElement.style.setProperty("--darkColor-blue", "#B26E45"); // Warm dark tan
+            document.documentElement.style.setProperty("--textColorDark-blue", "#4D2E1A"); // Deep blue
+            document.documentElement.style.setProperty("--whitishColor-blue", "#FFF7EF"); // Creamy white
         } else {
             document.documentElement.style.setProperty("--bg-color-blue", `var(--bg-color-${colorValue})`);
             document.documentElement.style.setProperty("--accentLightTint-blue", `var(--accentLightTint-${colorValue})`);
@@ -762,7 +763,7 @@ const applyCustomTheme = (color) => {
 };
 
 // Load theme on page reload
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
     if (storedTheme) {
         applySelectedTheme(storedTheme);
     } else if (storedCustomColor) {
@@ -771,7 +772,7 @@ window.addEventListener("load", function () {
 });
 
 // Handle radio button changes
-const handleThemeChange = function () {
+const handleThemeChange = function() {
     if (this.checked) {
         const colorValue = this.value;
         localStorage.setItem(themeStorageKey, colorValue);
@@ -787,7 +788,7 @@ radioButtons.forEach(radioButton => {
 });
 
 // Handle color picker changes
-const handleColorPickerChange = function (event) {
+const handleColorPickerChange = function(event) {
     const selectedColor = event.target.value;
     resetDarkTheme(); // Clear dark theme if active
     localStorage.setItem(customThemeStorageKey, selectedColor); // Save custom color
@@ -824,7 +825,7 @@ function hideResultBox() {
 showResultBox();
 hideResultBox();
 
-document.getElementById("searchQ").addEventListener("input", async function () {
+document.getElementById("searchQ").addEventListener("input", async function() {
     const searchsuggestionscheckbox = document.getElementById("searchsuggestionscheckbox");
     if (searchsuggestionscheckbox.checked) {
         var selectedOption = document.querySelector("input[name='search-engine']:checked").value;
@@ -896,7 +897,7 @@ resultBox.addEventListener("mouseleave", () => {
     isMouseOverResultBox = false;
 });
 
-document.getElementById("searchQ").addEventListener("keydown", function (e) {
+document.getElementById("searchQ").addEventListener("keydown", function(e) {
     if (isMouseOverResultBox) {
         return; // Ignore keyboard events if the mouse is in the resultBox
     }
@@ -982,7 +983,7 @@ async function getAutocompleteSuggestions(query) {
 }
 
 // Hide results when clicking outside
-document.addEventListener("click", function (event) {
+document.addEventListener("click", function(event) {
     const searchbar = document.getElementById("searchbar");
     // const resultBox = document.getElementById("resultBox");
 
@@ -1066,7 +1067,7 @@ document.getElementById("menuCloseButton").onclick = () => {
 }
 
 // ---------------------------------------------------------
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
 
     /* ------ Constants ------ */
@@ -1639,8 +1640,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     initShortCutSwitch(element);
 
+    shortcuts.style.display = "flex";
+    saveDisplayStatus("shortcutsDisplayStatus", "flex");
+    shortcutEditField.classList.remove("inactive");
+    saveActiveStatus("shortcutEditField", "active");
+    adaptiveIconField.classList.remove("inactive");
+    saveActiveStatus("adaptiveIconField", "active");
+
     // Add change event listeners for the checkboxes
-    shortcutsCheckbox.addEventListener("change", function () {
+    shortcutsCheckbox.addEventListener("change", function() {
+
         saveCheckboxState("shortcutsCheckboxState", shortcutsCheckbox);
         if (shortcutsCheckbox.checked) {
             shortcuts.style.display = "flex";
@@ -1659,7 +1668,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    searchsuggestionscheckbox.addEventListener("change", function () {
+    searchsuggestionscheckbox.addEventListener("change", function() {
         saveCheckboxState("searchsuggestionscheckboxState", searchsuggestionscheckbox);
         if (searchsuggestionscheckbox.checked) {
             proxybypassField.classList.remove("inactive");
@@ -1674,7 +1683,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    useproxyCheckbox.addEventListener("change", function () {
+    useproxyCheckbox.addEventListener("change", function() {
         if (useproxyCheckbox.checked) {
             // Show the disclaimer and check the user's choice
             const userConfirmed = showProxyDisclaimer();
@@ -1702,7 +1711,7 @@ document.addEventListener("DOMContentLoaded", function () {
     iconStyle.textContent = adaptiveIconToggle.checked ? ADAPTIVE_ICON_CSS : "";
 
     // Add event listener for checkbox
-    adaptiveIconToggle.addEventListener("change", function () {
+    adaptiveIconToggle.addEventListener("change", function() {
         saveCheckboxState("adaptiveIconToggle", adaptiveIconToggle);
         if (adaptiveIconToggle.checked) {
             iconStyle.textContent = ADAPTIVE_ICON_CSS;
@@ -1711,7 +1720,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    enableDarkModeCheckbox.addEventListener("change", function () {
+    enableDarkModeCheckbox.addEventListener("change", function() {
         saveCheckboxState("enableDarkModeCheckboxState", enableDarkModeCheckbox);
     });
 
@@ -1771,7 +1780,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ------ Loading ------ */
 
     // Load and apply the saved checkbox states and display statuses
-    loadCheckboxState("shortcutsCheckboxState", shortcutsCheckbox);
+    // loadCheckboxState("shortcutsCheckboxState", shortcutsCheckbox);
     loadActiveStatus("shortcutEditField", shortcutEditField);
     loadActiveStatus("adaptiveIconField", adaptiveIconField);
     loadCheckboxState("searchsuggestionscheckboxState", searchsuggestionscheckbox);
@@ -1783,7 +1792,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadShortcuts();
 });
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", function(event) {
     const searchInput = document.getElementById("searchQ");
     const searchBar = document.querySelector(".searchbar");
     if (event.key === "/" && event.target.tagName !== "INPUT" && event.target.tagName !== "TEXTAREA" && event.target.isContentEditable !== true) {
@@ -1798,4 +1807,55 @@ document.addEventListener("keydown", function (event) {
 function ApplyLoadingColor() {
     let LoadingScreenColor = getComputedStyle(document.body).getPropertyValue("background-color");
     localStorage.setItem("LoadingScreenColor", LoadingScreenColor);
+}
+async function getNews() {
+    const res = await fetch("https://www.tsb.org.tr/Announcement/GetAnnouncements?pageId=1&_=1738067905398", {
+        "headers": {
+            "accept": "application/json, text/javascript, */*; q=0.01",
+            "accept-language": "en-US,en;q=0.9",
+            "sec-ch-ua": "\"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Linux\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "x-requested-with": "XMLHttpRequest"
+        },
+        "referrer": "https://www.tsb.org.tr/tr/duyurular",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": null,
+        "method": "GET",
+        "mode": "cors",
+        "credentials": "include"
+    });
+    const content = await res.json();
+    const newsList = document.getElementById('news-list');
+
+    console.log(content.Result);
+    const mic = `
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+            fill="#434343">
+            <path
+                d="M720-440v-80h160v80H720Zm48 280-128-96 48-64 128 96-48 64Zm-80-480-48-64 128-96 48 64-128 96ZM200-200v-160h-40q-33 0-56.5-23.5T80-440v-80q0-33 23.5-56.5T160-600h160l200-120v480L320-360h-40v160h-80Zm240-182v-196l-98 58H160v80h182l98 58Zm120 36v-268q27 24 43.5 58.5T620-480q0 41-16.5 75.5T560-346ZM300-480Z" />
+        </svg>
+`
+
+    content.Result.forEach((entry, index) => {
+        const entryContainer = document.createElement("div");
+        entryContainer.classList.add('news-item')
+        const micContainer = document.createElement("div");
+        micContainer.innerHTML = mic;
+        const titleNode = document.createElement("span");
+        titleNode.innerText = entry.Title;
+        entryContainer.appendChild(micContainer);
+        entryContainer.appendChild(titleNode);
+        newsList.appendChild(entryContainer);
+        if (index < content.Result.length - 1) {
+            const line = document.createElement('div');
+            line.innerText = '.'
+            line.classList.add('news-line');
+            newsList.appendChild(line);
+        }
+    });
+
 }

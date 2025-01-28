@@ -28,11 +28,11 @@
 
 	/* 🔵🔵🔵 */
 	/* ⚠️ Please don't change the color value or names for Blue (if ? modifying code would be difficult */
-	--bg-color-blue: #bbd6fd;
-	--accentLightTint-blue: #e2eeff;
-	--darkerColor-blue: #3569b2;
-	--darkColor-blue: #4382ec;
-	--textColorDark-blue: #1b3041;
+	--bg-color-blue: #FFFFFF;
+	--accentLightTint-blue: #F4E3D2;
+	--darkerColor-blue: #8A5632;
+	--darkColor-blue: #B26E45;
+	--textColorDark-blue: #4D2E1A;
 	--whitishColor-blue: #ffffff;
 
 	/* 🔴🔴🔴 */
@@ -163,7 +163,8 @@ html {
 	height: 100%;
 	width: 100%;
 	margin: 0;
-	scrollbar-width: none; /* For Firefox */
+	scrollbar-width: none;
+	/* For Firefox */
 }
 
 .html::-webkit-scrollbar {
@@ -185,38 +186,36 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-	height: 100%; /* Ensure the image fits the viewport height */
-	margin: 0; /* Remove margin to avoid unwanted spacing */
+	height: 100%;
+	/* Ensure the image fits the viewport height */
+	margin: 0;
+	/* Remove margin to avoid unwanted spacing */
 }
 
-html:has(body[data-bg="color"] .menuBar #enableDarkModeCheckbox:checked):not(
-		:has(#darkTheme:checked)
-	) {
+html:has(body[data-bg="color"] .menuBar #enableDarkModeCheckbox:checked):not(:has(#darkTheme:checked)) {
 	filter: invert(1) hue-rotate(180deg);
 	-webkit-filter: invert(1) hue-rotate(180deg);
+
 	& #darkTheme,
 	& .favicon {
 		filter: invert(1) hue-rotate(180deg);
 		-webkit-filter: invert(1) hue-rotate(180deg);
 	}
+
 	--whitishColor-blue: #f2f2f2;
 }
 
-body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(
-		:has(#darkTheme:checked)
-	)
-	> *:not(.menuBar, #bookmarksContainer),
-body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(
-		:has(#darkTheme:checked)
-	)
-	:is(.menuCont, .bookmark-sidebar) {
+body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(:has(#darkTheme:checked))>*:not(.menuBar, #bookmarksContainer),
+body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(:has(#darkTheme:checked)):is(.menuCont, .bookmark-sidebar) {
 	filter: invert(1) hue-rotate(180deg);
 	-webkit-filter: invert(1) hue-rotate(180deg);
+
 	& #darkTheme,
 	& .favicon {
 		filter: invert(1) hue-rotate(180deg);
 		-webkit-filter: invert(1) hue-rotate(180deg);
 	}
+
 	--whitishColor-blue: #f2f2f2;
 }
 
@@ -239,7 +238,7 @@ body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(
 	pointer-events: none;
 }
 
-.searchbar:has(:placeholder-shown) ~ .resultBox.show {
+.searchbar:has(:placeholder-shown)~.resultBox.show {
 	opacity: 0;
 	z-index: -1000;
 	transform: translateY(-70px);
@@ -247,9 +246,8 @@ body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(
 	pointer-events: none;
 }
 
-.centerDiv:has(.resultBox.show) ~ #shortcuts-section,
-.centerDiv:has(.dropdown-content[style="display: block;"])
-	~ #shortcuts-section {
+.centerDiv:has(.resultBox.show)~#shortcuts-section,
+.centerDiv:has(.dropdown-content[style="display: block;"])~#shortcuts-section {
 	z-index: -1;
 }
 
@@ -393,7 +391,8 @@ body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(
 	overflow-y: auto;
 	/* Add vertical scrollbar when needed */
 	box-sizing: border-box;
-	z-index: 3; /* This should be higher that z-index of [.googleAppsCont] */
+	z-index: 3;
+	/* This should be higher that z-index of [.googleAppsCont] */
 }
 
 /* Individual Icon Item Styling */
@@ -495,6 +494,7 @@ body[data-bg="wallpaper"]:has(.menuBar #enableDarkModeCheckbox:checked):not(
 		scrollbar-color: var(--darkColor-blue) transparent;
 	}
 }
+
 /* ----------------- End of Google App Menu ----------------- */
 
 /* ----------------- Start of Bookmark System ----------------- */
@@ -652,7 +652,8 @@ body #bookmarkButton.bookmark-button.rotate {
 	border: none;
 	color: var(--textColorDark-blue);
 	cursor: pointer;
-	display: none; /* Hidden by default */
+	display: none;
+	/* Hidden by default */
 }
 
 #bookmarkList {
@@ -661,7 +662,8 @@ body #bookmarkButton.bookmark-button.rotate {
 	margin: 0;
 	text-align: left;
 	height: calc(100% - 230px);
-	overflow-y: auto; /* Add vertical scrollbar */
+	overflow-y: auto;
+	/* Add vertical scrollbar */
 	overflow-x: hidden;
 }
 
@@ -698,6 +700,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	justify-content: space-between;
 	align-items: center;
 	padding: 8px 32px;
+
 	& h3 {
 		font-size: 1rem;
 		color: var(--darkerColor-blue);
@@ -715,12 +718,9 @@ body #bookmarkButton.bookmark-button.rotate {
 	margin-left: 10px;
 	cursor: pointer;
 }
-.bookmark-view-as-container
-	#bookmarkGridCheckbox:is(:checked)
-	~ #bookmarkViewGrid,
-.bookmark-view-as-container
-	#bookmarkGridCheckbox:is(:not(:checked))
-	~ #bookmarkViewList {
+
+.bookmark-view-as-container #bookmarkGridCheckbox:is(:checked)~#bookmarkViewGrid,
+.bookmark-view-as-container #bookmarkGridCheckbox:is(:not(:checked))~#bookmarkViewList {
 	background: var(--darkColor-blue);
 	color: white;
 }
@@ -740,6 +740,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	border: none;
 	position: relative;
 }
+
 #bookmarkList li:is(.folder) {
 	padding: 10px 0 10px 10px;
 }
@@ -750,7 +751,7 @@ body #bookmarkButton.bookmark-button.rotate {
 }
 
 #bookmarkList:is(.grid-view) ul:not(.hidden),
-#bookmarkList:is(.grid-view) .folder.open > ul {
+#bookmarkList:is(.grid-view) .folder.open>ul {
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
 
@@ -768,9 +769,11 @@ body #bookmarkButton.bookmark-button.rotate {
 	padding: 2px;
 	flex-direction: column;
 }
+
 #bookmarkList:is(.grid-view) li a .favicon {
 	margin: 20px auto 24px auto;
 }
+
 #bookmarkList:is(.grid-view) li a:has(.favicon)::after,
 #bookmarkList:is(.grid-view) li a:has(.favicon)::before {
 	content: "";
@@ -786,6 +789,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	box-sizing: border-box;
 	border-radius: 32px;
 }
+
 #bookmarkList:is(.grid-view) li a:has(.favicon)::before {
 	background: var(--bg-color-blue);
 	width: 36px;
@@ -843,19 +847,22 @@ body #bookmarkButton.bookmark-button.rotate {
 
 .ui {
 	display: block;
-	pointer-events: none; /* Make ui class button unclickable */
+	pointer-events: none;
+	/* Make ui class button unclickable */
 }
 
 .folder svg {
-	margin-right: 5px; /* Adjust this value for more or less space */
-	vertical-align: middle; /* Aligns the icon with the text */
+	margin-right: 5px;
+	/* Adjust this value for more or less space */
+	vertical-align: middle;
+	/* Aligns the icon with the text */
 }
 
 .folder ul {
 	padding-left: 20px;
 }
 
-.folder.open > ul {
+.folder.open>ul {
 	display: block;
 }
 
@@ -870,14 +877,15 @@ body #bookmarkButton.bookmark-button.rotate {
 	color: var(--darkColor-blue);
 	cursor: pointer;
 	position: absolute;
-	right: 10px; /* Position it to the right */
+	right: 10px;
+	/* Position it to the right */
 	top: 50%;
 	transform: translateY(-50%);
 	opacity: 0;
 	pointer-events: none;
 }
 
-:hover > .bookmark-delete-button {
+:hover>.bookmark-delete-button {
 	opacity: 1;
 	pointer-events: auto;
 }
@@ -1035,8 +1043,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	height: 18px;
 	width: 18px;
 	border-radius: 50%;
-	background: url("./svgs/todo-check-stroke.svg") no-repeat center center /
-		contain;
+	background: url("./svgs/todo-check-stroke.svg") no-repeat center center / contain;
 	top: 50%;
 	transform: translateY(-50%);
 	left: 8px;
@@ -1080,8 +1087,7 @@ body #bookmarkButton.bookmark-button.rotate {
 
 .todolistitem .todopinbtn {
 	right: 28px;
-	background: url("./svgs/todo-pin-stroke.svg") no-repeat center center /
-		contain;
+	background: url("./svgs/todo-pin-stroke.svg") no-repeat center center / contain;
 }
 
 .todolistitem.pinned .todopinbtn {
@@ -1092,6 +1098,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	border-top-left-radius: 18px;
 	border-top-right-radius: 18px;
 }
+
 .todolistitem:last-child {
 	border-bottom-left-radius: 18px;
 	border-bottom-right-radius: 18px;
@@ -1111,8 +1118,8 @@ body #bookmarkButton.bookmark-button.rotate {
 
 /* ____________Clock_____________________---- */
 #digitalClock {
-	width: 300px;
-	height: 300px;
+	width: 200px;
+	height: 200px;
 	border-radius: 100%;
 	position: relative;
 }
@@ -1140,6 +1147,7 @@ body #bookmarkButton.bookmark-button.rotate {
 }
 
 .clock .centerPoint {
+	scale: 0.5;
 	width: 20px;
 	height: 20px;
 	position: absolute;
@@ -1215,7 +1223,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	left: 10px;
 }
 
-#digitalClock[style="display: block;"] + .ttteexxtt {
+#digitalClock[style="display: block;"]+.ttteexxtt {
 	top: 1rem;
 }
 
@@ -1290,7 +1298,9 @@ body #bookmarkButton.bookmark-button.rotate {
 .rightDiv .topDiv {
 	height: 196px;
 	display: flex;
-	justify-content: flex-end;
+	align-items: center;
+	gap: 1rem;
+	justify-content: center;
 }
 
 /* lrectangle______________________ */
@@ -1374,8 +1384,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	height: 100%;
 	width: 40px;
 	background-size: 66%;
-	background: var(--darkColor-blue) url("./svgs/humidity.svg") no-repeat center
-		center;
+	background: var(--darkColor-blue) url("./svgs/humidity.svg") no-repeat center center;
 	right: 0;
 	border-radius: 100%;
 }
@@ -1739,6 +1748,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	scrollbar-width: none;
 	margin: auto;
 }
+
 #shortcuts-section::-webkit-scrollbar {
 	display: none;
 }
@@ -1765,9 +1775,7 @@ body #bookmarkButton.bookmark-button.rotate {
 #shortcuts-section #defaultMonitor {
 	position: absolute;
 	/* This is the standard height of one row */
-	height: calc(
-		var(--shortcut-size) + var(--gap) + var(--shortcut-bar-gap-and-padding)
-	);
+	height: calc(var(--shortcut-size) + var(--gap) + var(--shortcut-bar-gap-and-padding));
 	visibility: hidden;
 }
 
@@ -1775,13 +1783,8 @@ body #bookmarkButton.bookmark-button.rotate {
 	pointer-events: auto;
 	transition: transform 0.5s;
 	margin-top: calc(var(--gap) - var(--shortcut-bar-gap-and-padding));
-	max-width: calc(
-		var(--max-shortcut-bar-width) -
-			mod(
-				var(--max-shortcut-bar-width) - var(--shortcut-bar-gap-and-padding),
-				var(--shortcut-size) + var(--shortcut-bar-gap-and-padding)
-			)
-	);
+	max-width: calc(var(--max-shortcut-bar-width) - mod(var(--max-shortcut-bar-width) - var(--shortcut-bar-gap-and-padding),
+				var(--shortcut-size) + var(--shortcut-bar-gap-and-padding)));
 	display: flex;
 	flex-wrap: wrap;
 	padding: var(--shortcut-bar-gap-and-padding);
@@ -1902,11 +1905,15 @@ body #bookmarkButton.bookmark-button.rotate {
 	max-width: calc(100% - 140px);
 	overflow-x: scroll;
 	overflow-y: hidden;
-	scrollbar-width: none; /* Firefox */
-	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+	-ms-overflow-style: none;
+	/* IE and Edge */
 }
+
 .aiToolsCont::-webkit-scrollbar {
-	display: none; /* Chrome, Safari, Edge, Opera */
+	display: none;
+	/* Chrome, Safari, Edge, Opera */
 }
 
 .aiToolsCont .hangno {
@@ -1971,6 +1978,7 @@ body #bookmarkButton.bookmark-button.rotate {
 	color: var(--textColorDark-blue);
 	font-size: 1rem;
 	transition: all 0.3s ease;
+
 	& div {
 		text-wrap-mode: nowrap;
 	}
@@ -2223,12 +2231,12 @@ body #bookmarkButton.bookmark-button.rotate {
 }
 
 /* Apply styles when the input is checked (on) */
-input:checked + .toggle {
+input:checked+.toggle {
 	background-color: var(--darkColor-blue);
 	/* Background color when on */
 }
 
-input:checked + .toggle:before {
+input:checked+.toggle:before {
 	transform: translateX(26px);
 }
 
@@ -2666,7 +2674,8 @@ input:checked + .toggle:before {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 9px; /* Space between SVG and text */
+	gap: 9px;
+	/* Space between SVG and text */
 	background-color: var(--whitishColor-blue);
 	color: var(--darkColor-blue);
 	width: -webkit-fill-available;
@@ -2779,6 +2788,7 @@ input:checked + .toggle:before {
 #colorPicker {
 	display: none;
 }
+
 .colorPickerLabel {
 	grid-column: span 3;
 	width: 100%;
@@ -2794,9 +2804,11 @@ input:checked + .toggle:before {
 	border: 2px solid transparent;
 	transition: background-color 0.3s ease;
 }
+
 .colorPickerLabel:hover {
 	background: var(--bg-color-blue);
 }
+
 /* <!-- ----End of Color Picker || ColorPicker---- --> */
 
 /* -----------End of theming stuff---------------- */
@@ -3046,9 +3058,11 @@ input:checked + .toggle:before {
 		/*Because Clock width is 300px*/
 		margin: auto auto auto var(--gap);
 	}
+
 	.shortcutsContainer {
 		row-gap: 2rem;
 	}
+
 	#shortcuts-section {
 		padding-left: 30px;
 		margin: 0 auto;
@@ -3066,10 +3080,12 @@ input:checked + .toggle:before {
 		display: none;
 	}
 }
+
 @media screen and (max-width: 720px) {
 	:root {
 		--gap: 1rem;
 	}
+
 	#shortcuts-section {
 		max-width: 30rem;
 		position: fixed;
@@ -3079,21 +3095,25 @@ input:checked + .toggle:before {
 		overflow-x: scroll;
 		overflow-y: clip;
 	}
+
 	.shortcutsContainer {
 		max-width: none;
 		flex-wrap: nowrap;
 	}
+
 	#shortcuts-section .wrapper {
 		width: 100%;
 	}
-	#shortcuts-section:has(~ .menuBar #shortcut_switchcheckbox:checked)
-		.shortcutsContainer {
+
+	#shortcuts-section:has(~ .menuBar #shortcut_switchcheckbox:checked) .shortcutsContainer {
 		margin-top: 0;
 		flex-wrap: nowrap;
 	}
+
 	.menuBar {
 		--gap: 30px;
 	}
+
 	.centerDiv {
 		width: calc(100% - 4rem);
 		margin-bottom: 10rem;
@@ -3103,6 +3123,7 @@ input:checked + .toggle:before {
 		align-items: center;
 		justify-content: center;
 	}
+
 	.leftDiv {
 		display: flex;
 		align-items: center;
@@ -3110,9 +3131,11 @@ input:checked + .toggle:before {
 		position: relative;
 		top: 30px;
 	}
+
 	.rightDiv {
 		scale: 0.75;
 	}
+
 	.ttteexxtt {
 		display: none;
 	}
@@ -3126,9 +3149,11 @@ input:checked + .toggle:before {
 		justify-content: start;
 		padding-top: 60px;
 	}
+
 	.menuBar {
 		top: 0;
 	}
+
 	.searchbar {
 		width: 94vw;
 		transform-origin: top left;
@@ -3141,9 +3166,11 @@ input:checked + .toggle:before {
 			min-width: 0px;
 		}
 	}
+
 	#enterBtn {
 		display: none;
 	}
+
 	#shortcuts-section {
 		height: auto;
 		position: relative;
@@ -3154,37 +3181,45 @@ input:checked + .toggle:before {
 		max-width: unset;
 		bottom: 0;
 	}
+
 	.todoListCont {
 		transform-origin: top left;
 		scale: 0.8;
 	}
+
 	.todo-container {
 		transform-origin: top left;
 		scale: 0.85;
 		position: fixed;
 	}
+
 	.googleAppsCont {
 		transform-origin: top right;
 		scale: 0.8;
 	}
+
 	.bookmark-button {
 		transform-origin: top right;
 		scale: 0.8;
 	}
+
 	.icon-container {
 		transform-origin: top right;
 		scale: 0.85;
 		position: fixed;
 	}
+
 	#menuButton {
 		transform-origin: bottom right;
 		scale: 0.8;
 	}
+
 	.aiToolsCont {
 		transform-origin: bottom left;
 		scale: 0.8;
 		max-width: calc(100% - 30px);
 	}
+
 	.leftDiv {
 		width: calc(100vw / 0.5);
 		top: 0;
@@ -3196,32 +3231,38 @@ input:checked + .toggle:before {
 		align-items: end;
 		justify-content: flex-start;
 	}
+
 	.clock .centerPoint {
 		width: calc(20% / 3);
 		height: calc(20% / 3);
 	}
+
 	.clock .centerPoint .sui {
 		height: 500%;
 		width: 100%;
 		top: -450%;
 		border-radius: 60px;
 	}
+
 	#hour {
 		height: 400%;
 		top: -350%;
 	}
+
 	#second::after {
 		width: 100%;
 		aspect-ratio: 1;
 		height: auto;
 		top: calc(-160% / 7);
 	}
+
 	#minute::after,
 	#hour::after {
 		width: 100%;
 		aspect-ratio: 0.5;
 		height: auto;
 	}
+
 	#analogClock,
 	#digitalClock {
 		width: 45%;
@@ -3229,6 +3270,7 @@ input:checked + .toggle:before {
 		aspect-ratio: 1;
 		height: auto;
 	}
+
 	.rightDiv {
 		scale: 0.5;
 		margin-top: -64px;
@@ -3255,9 +3297,11 @@ input:checked + .toggle:before {
 				transform-origin: center;
 			}
 		}
+
 		#temp {
 			font-size: 16vw;
 		}
+
 		#wIcon {
 			width: 25vw;
 			height: 25vw;
@@ -3265,68 +3309,80 @@ input:checked + .toggle:before {
 			margin-left: -13vw;
 		}
 	}
+
 	.toggleTextsCont .ttcont:has(#hideWeatherBox) {
 		display: flex;
 	}
+
 	.toggleTextsCont .ttcont:has(#shortcut_switchcheckbox) {
 		display: none;
 	}
+
 	.searchbar .searchIcon:nth-of-type(1) {
 		display: none !important;
 	}
+
 	.searchbar .searchIcon:nth-of-type(2) {
 		display: block !important;
 	}
+
 	.centerDiv:has(~ .menuBar #digitalCheckbox:checked) {
 		& .leftDiv {
 			margin-top: -6vw;
 		}
+
 		& .rAndakar {
 			scale: 0.8;
 		}
 	}
+
 	.centerDiv:has(~ .menuBar #hideWeatherCheckbox:checked) .topDiv .lrectangle {
 		display: none;
 	}
+
 	.centerDiv {
 		position: relative;
 		margin-bottom: 6rem;
 		padding-top: 0;
 	}
+
 	.resultBox {
 		scale: 1.5;
 		width: calc(94vw / 0.75);
 		margin-left: calc(320px - 94vw);
 		transform-origin: top left;
 	}
+
 	.resultBox {
 		top: 120px;
 		bottom: unset;
 	}
+
 	.resultBox.show {
 		transform: translateY(36px);
 	}
+
 	.searchWithCont {
 		display: none;
 	}
+
 	.shortcutsContainer[style="display: none;"] {
 		display: flex !important;
 	}
-	.hangno:has(
-			+ :is(
-					.toolsCont[style="display: flex; opacity: 1; transform: translateX(0px); gap: 12px;"],
-					.toolsCont[style="display: flex; opacity: 0; transform: translateX(-100%); gap: 0px;"]
-				)
-		) {
+
+	.hangno:has(+ :is(.toolsCont[style="display: flex; opacity: 1; transform: translateX(0px); gap: 12px;"],
+			.toolsCont[style="display: flex; opacity: 0; transform: translateX(-100%); gap: 0px;"])) {
 		& .icon {
 			margin: 0;
 		}
+
 		& .label {
 			width: 0;
 			opacity: 0;
 			pointer-events: none;
 		}
 	}
+
 	.shortcutsContainer {
 		margin: 0;
 		width: fit-content;
@@ -3335,6 +3391,7 @@ input:checked + .toggle:before {
 		max-width: unset;
 		padding: 20px 0;
 	}
+
 	#shortcuts-section {
 		padding-left: 30px;
 		overflow-x: scroll;
@@ -3344,6 +3401,7 @@ input:checked + .toggle:before {
 		max-width: unset;
 		left: 0;
 	}
+
 	#shortcuts-section .wrapper {
 		width: 100%;
 	}
@@ -3353,4 +3411,121 @@ input:checked + .toggle:before {
 	.resultBox {
 		bottom: -32px;
 	}
+}
+
+#logo {
+	width: 500px;
+}
+
+#news-container {
+	width: 500px;
+	border-radius: 5%;
+	padding: 5%;
+	background-color: var(--accentLightTint-blue);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+#news-title {
+	font-family: var(--main-font-family);
+	font-weight: bold;
+	font-size: 1.2rem;
+	color: var(--textColorDark-blue);
+}
+
+#news-title-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#news-list {
+	display: flex;
+	flex-direction: column;
+	height: 415px;
+	max-height: 500px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-width: 100%;
+	color: var(--textColorDark-blue);
+	gap: 1rem;
+	font-size: 1rem;
+}
+
+.news-item {
+	font-family: var(--main-font-family);
+	display: flex;
+	/* align-items: center; */
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.news-item svg {
+	fill: var(--darkColor-blue);
+}
+
+.news-line {
+	width: 400px;
+	height: 2px;
+	border-radius: 5px;
+	background-color: var(--darkerColor-blue)
+}
+
+#news-list::-webkit-scrollbar {
+	width: 6px;
+	/* Width of the scrollbar */
+}
+
+#news-list::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	/* Light gray track */
+	border-radius: 8px;
+	/* Rounded corners for the track */
+}
+
+#news-list::-webkit-scrollbar-thumb {
+	background-color: var(--darkerColor-blue);
+	/* Darker gray thumb */
+	border-radius: 8px;
+	/* Rounded corners for the thumb */
+	/* border: 2px solid #f1f1f1; /* Optional: add space around the thumb */
+	*/
+}
+
+#news-list::-webkit-scrollbar-thumb:hover {
+	background-color: #555;
+	/* Darker gray on hover */
+}
+
+.image-grid {
+	margin-top: -100px;
+	border-radius: 5%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 8px;
+}
+
+.image-grid img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.image-grid img:nth-child(1) {
+	border-top-left-radius: 10px;
+}
+
+.image-grid img:nth-child(3) {
+	border-top-right-radius: 10px;
+}
+
+.image-grid img:nth-child(4) {
+	border-bottom-left-radius: 10px;
+}
+
+.image-grid img:nth-child(6) {
+	border-bottom-right-radius: 10px;
 }
